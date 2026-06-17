@@ -13,14 +13,13 @@ export class Register {
     correo: string = '';
     password: string = '';
     confirmPassword: string = '';
-    id_rol: any = 0;
     message = signal<string>('');
 
     private authService = inject(AuthService);
     private router = inject(Router);
 
     onSubmit(): void {
-        if(!this.nombre || !this.correo || !this.password || !this.confirmPassword || !this.id_rol) {
+        if(!this.nombre || !this.correo || !this.password || !this.confirmPassword) {
             this.message.set('Completa todos los campos.');
             return;
         }
@@ -35,9 +34,7 @@ export class Register {
             return;
         }
 
-        const rolNum = Number(this.id_rol);
-
-        this.authService.register(this.nombre, this.correo, this.password, rolNum).subscribe({
+        this.authService.register(this.nombre, this.correo, this.password, 2).subscribe({
             next: () => {
                 console.log('Register success');
                 this.router.navigate(['/login']);

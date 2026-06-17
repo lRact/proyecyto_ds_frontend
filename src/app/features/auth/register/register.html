@@ -31,22 +31,6 @@
                 class="form-control" id="registerConfirmPassword" type="password" minlength="8" required [(ngModel)]="confirmPassword">
             </div>
 
-            <div class="mb-3">
-                <label class = "form-label">¿Eres alumno o docente?</label>
-                <div class = "d-flex gap-2">
-                    <input type="radio" class="btn-check" name="userRole" id="roleAlumno" value="3" [(ngModel)]="id_rol" required>
-                    <label class="btn btn-outline-primary w-50 py-2 d-flex align-items-center justify-content-center" for="roleAlumno">
-                        <i class="bi bi-mortarboard fs-4 mb-1"></i>
-                        <span>Alumno</span>
-                    </label>
-                    <input type="radio" class="btn-check" name="userRole" id="roleDocente" value="2" [(ngModel)]="id_rol" required>
-                    <label class="btn btn-outline-primary w-50 py-2 d-flex align-items-center justify-content-center" for="roleDocente">
-                        <i class="bi bi-person-workspace fs-4 mb-1"></i>
-                        <span>Docente</span>
-                    </label>
-                </div>
-            </div>
-
             @if(message()) {
                 <div class = "alert alert-danger p-2 small mb-3">{{ message() }}</div>
             }
