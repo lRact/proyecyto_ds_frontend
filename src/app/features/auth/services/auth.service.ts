@@ -9,8 +9,8 @@ export class AuthService {
     private http = inject(HttpClient);
     private apiUrl = 'http://localhost:8080/auth';
 
-    register(nombre: string, correo: string, password: string, id_rol: number): Observable<any> {
-        return this.http.post<any>(`${ this.apiUrl }/register`, { nombre, correo, password, id_rol });
+    register(nombre: string, correo: string, password: string, rol: string): Observable<any> {
+        return this.http.post<any>(`${ this.apiUrl }/register`, { nombre, correo, password, rol });
     }
 
     login(email: string, password: string): Observable<{ accessToken: string }> {

@@ -34,7 +34,9 @@ export class Register {
             return;
         }
 
-        this.authService.register(this.nombre, this.correo, this.password, 2).subscribe({
+        const rol = 'alumno';
+
+        this.authService.register(this.nombre, this.correo, this.password, rol).subscribe({
             next: () => {
                 console.log('Register success');
                 this.router.navigate(['/login']);
