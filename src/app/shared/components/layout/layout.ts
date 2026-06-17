@@ -1,19 +1,22 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AuthService } from '../../../features/auth/services/auth.service';
 
 @Component({
     selector: 'app-layout',
-    imports: [RouterOutlet],
+    imports: [RouterOutlet, RouterLink],
     templateUrl: './layout.html',
     styleUrl: './layout.css',
 })
 export class Layout {
     randomMessage = signal<string>('');
+    userName = signal<string>('');
 
     private router = inject(Router);
     private destroyRef = inject(DestroyRef);
+    private authService = inject(AuthService);
     private mensajes: string[] = [
         'Kein Stress, alles wird gut. (Sin estrés, todo estará bien)',
         '一歩一歩 (いっぽいっぽ) -> Paso a paso.',
@@ -26,17 +29,24 @@ export class Layout {
 
     ngOnInit() {
         this.generateRandomMessage();
+        this.userName.set(this.authService.getUserName());
 
-        this.router.events.pipe(
-            filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-            takeUntilDestroyed(this.destroyRef)
-        ).subscribe(() => {
-            this.generateRandomMessage();
-        });
+        this.router.events
+            .pipe(
+                filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+                takeUntilDestroyed(this.destroyRef),
+            )
+            .subscribe(() => {
+                this.generateRandomMessage();
+            });
     }
 
     generateRandomMessage(): void {
         const randomIndex = Math.floor(Math.random() * this.mensajes.length);
         this.randomMessage.set(this.mensajes[randomIndex]);
+    }
+
+    logout(): void {
+        localStorage.removeItem('accessToken');
     }
 }

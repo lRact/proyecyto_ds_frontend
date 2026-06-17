@@ -3,26 +3,23 @@
 
     <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
         <div class="sidebar-header">
-            <a class="brand-mark" href="index.html" aria-label="adminHMD dashboard">
+            <a class="brand-mark" aria-label="adminHMD dashboard">
                 <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
                 <span class="brand-copy">
-            <span class="brand-title">adminHMD</span>
-            <span class="brand-subtitle">Admin Template</span>
+            <span class="brand-title">{{ userName() || 'Usuario' }}</span>
+            <span class="brand-subtitle">Tu propio espacio de actividades.</span>
           </span>
             </a>
         </div>
 
         <nav class="sidebar-nav">
-            <a class="nav-link active" href="index.html" aria-current="page">
-                <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+            <a class="nav-link" routerLink="/dashboard/inicio" aria-current="page">
                 <span class="nav-text">Inicio</span>
             </a>
             <a class="nav-link" href="users.html">
-                <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                 <span class="nav-text">Actividades</span>
             </a>
-            <a class="nav-link" href="add-user.html">
-                <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
+            <a class="nav-link" routerLink = "/dashboard/crear-actividad">
                 <span class="nav-text">Añadir actividad</span>
             </a>
         </nav>
@@ -40,12 +37,12 @@
                     <div class="dropdown">
                         <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="AH">
-                            <span class="profile-name d-none d-sm-inline">Admin Hasan</span>
+                            <span class="profile-name d-none d-sm-inline">Usuario</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            <li><a class="dropdown-item" href="/login" (click) = "logout()">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </div>

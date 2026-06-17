@@ -21,7 +21,14 @@ export class AuthService {
         );
     }
 
-    logout(): void {
-        localStorage.removeItem('token');
+    getUserName(): string {
+        const token = localStorage.getItem('accessToken');
+        if (!token) return '';
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            return payload.nombre ?? payload.name ?? payload.sub ?? '';
+        } catch {
+            return '';
+        }
     }
 }

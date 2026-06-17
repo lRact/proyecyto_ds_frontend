@@ -9,9 +9,19 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'index',
+                redirectTo: 'inicio',
                 pathMatch: 'full',
             },
+
+            {
+                path: 'inicio',
+                loadComponent: () => import('./features/inicio/inicio').then((m) => m.Inicio),
+            },
+
+            {
+                path: 'crear-actividad',
+                loadComponent: () => import('./features/actividades/form/actividad-form').then((m) => m.ActividadForm),
+            }
         ],
     },
 
