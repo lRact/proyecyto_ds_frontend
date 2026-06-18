@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ActividadService } from '../actividades/services/actividad.service';
 import { DatePipe } from '@angular/common';
 
@@ -11,7 +11,6 @@ import { DatePipe } from '@angular/common';
 })
 export class Inicio {
     private actividadService = inject(ActividadService);
-    private router = inject(Router);
 
     totales = signal<number>(0);
     completadas = signal<number>(0);

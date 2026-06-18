@@ -19,8 +19,23 @@ export const routes: Routes = [
             },
 
             {
+                path: 'actividades',
+                loadComponent: () => import('./features/actividades/list/actividad-list').then((m) => m.ActividadList),
+            },
+
+            {
                 path: 'crear-actividad',
-                loadComponent: () => import('./features/actividades/form/actividad-form').then((m) => m.ActividadForm),
+                loadComponent: () => import('./features/actividades/crear/actividad-crear').then((m) => m.ActividadCrear),
+            },
+
+            {
+                path: 'editar-actividad/:id',
+                loadComponent: () => import('./features/actividades/editar/actividad-editar').then((m) => m.ActividadEditar),
+            },
+
+            {
+                path: 'perfil',
+                loadComponent: () => import('./features/auth/perfil/perfil').then((m) => m.Perfil),
             }
         ],
     },

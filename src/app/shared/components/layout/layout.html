@@ -6,9 +6,9 @@
             <a class="brand-mark" aria-label="adminHMD dashboard">
                 <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
                 <span class="brand-copy">
-            <span class="brand-title">{{ userName() || 'Usuario' }}</span>
-            <span class="brand-subtitle">Tu propio espacio de actividades.</span>
-          </span>
+                    <span class="brand-title">{{ userName() }}</span>
+                    <span class="brand-subtitle">Tu propio espacio de actividades.</span>
+                </span>
             </a>
         </div>
 
@@ -16,11 +16,14 @@
             <a class="nav-link" routerLink="/dashboard/inicio" aria-current="page">
                 <span class="nav-text">Inicio</span>
             </a>
-            <a class="nav-link" href="users.html">
+            <a class="nav-link" routerLink="/dashboard/actividades">
                 <span class="nav-text">Actividades</span>
             </a>
-            <a class="nav-link" routerLink = "/dashboard/crear-actividad">
+            <a class="nav-link" routerLink="/dashboard/crear-actividad">
                 <span class="nav-text">Añadir actividad</span>
+            </a>
+            <a class="nav-link" routerLink="/dashboard/perfil">
+                <span class="nav-text">Perfil</span>
             </a>
         </nav>
 
@@ -35,14 +38,18 @@
             <div class="container-fluid px-3 px-lg-4">
                 <div class="navbar-actions ms-auto">
                     <div class="dropdown">
-                        <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="AH">
-                            <span class="profile-name d-none d-sm-inline">Usuario</span>
+                        <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img class="avatar-img avatar-sm" src="../assets/imagenes/avatar/avatar-fallback.jpg"
+                                 alt="IMG">
+                            <span class="profile-name d-none d-sm-inline">{{ userName() }}</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/login" (click) = "logout()">Cerrar sesión</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/login" (click)="logout()">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </div>

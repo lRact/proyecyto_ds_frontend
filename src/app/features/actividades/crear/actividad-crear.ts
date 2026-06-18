@@ -4,12 +4,12 @@ import { ActividadService } from '../services/actividad.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-actividad-form',
+    selector: 'app-actividad-crear',
     standalone: true,
     imports: [FormsModule],
-    templateUrl: 'actividad-form.html'
+    templateUrl: 'actividad-crear.html'
 })
-export class ActividadForm {
+export class ActividadCrear {
     nombre_actividad = '';
     fecha_entrega = '';
     nivel_estres = 1;

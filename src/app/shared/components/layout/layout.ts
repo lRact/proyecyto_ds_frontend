@@ -16,7 +16,6 @@ export class Layout {
 
     private router = inject(Router);
     private destroyRef = inject(DestroyRef);
-    private authService = inject(AuthService);
     private mensajes: string[] = [
         'Kein Stress, alles wird gut. (Sin estrés, todo estará bien)',
         '一歩一歩 (いっぽいっぽ) -> Paso a paso.',
@@ -29,7 +28,16 @@ export class Layout {
 
     ngOnInit() {
         this.generateRandomMessage();
-        this.userName.set(this.authService.getUserName());
+
+        const token = localStorage.getItem('accessToken');
+
+        if(!token) {
+            this.userName.set('Usuario');
+        }
+        else {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            this.userName.set(payload.nombre);
+        }
 
         this.router.events
             .pipe(
